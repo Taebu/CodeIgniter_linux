@@ -20,6 +20,8 @@
     <link href="/prq/include/css/animate.css" rel="stylesheet">
     <link href="/prq/include/css/style.css" rel="stylesheet">
 
+    <link href="/prq/include/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -244,15 +246,17 @@
                         <div class="dropdown profile-element"> <span>
 
 					<?php
-						if( @$this->session->userdata['logged_in'] == TRUE )
+						if( @$this->session->userdata['logged_in'] == TRUE ||@$this->input->cookie('logged_in', TRUE) == TRUE)
 					{?>
                             <img alt="image" class="img-circle" src="/prq/include/img/profile_small_mtb.jpg" />
                              </span>
 							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-							<span class="clear"> <span class="block m-t-xs"> <strong class="font-bold"><?php echo $this->session->userdata['name'];?></strong>
+							<span class="clear"> <span class="block m-t-xs"> <strong class="font-bold"><?php //echo $this->session->userdata['name'];?>
+							<?php echo $this->input->cookie('name', TRUE);?>
+							</strong>
                              </span> <span class="text-muted text-xs block">Web Developer<b class="caret"></b></span> </span> </a>
 						<?php }else{?>
-                            <img alt="image" class="img-circle" src="/prq/include/img/profile_small.jpg" />
+                            <img alt="image" class="img-circle" src="/prq/include/img/profile_small_x.png" /> 
 							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
 							<span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">Please Login </strong>
                              </span> <span class="text-muted text-xs block">anonymouse<b class="caret"></b></span> </span> </a>
@@ -264,7 +268,8 @@
                                 <li><a href="mailbox.html">Mailbox</a></li>
                                 <li class="divider"></li>
 													<?php
-						if( @$this->session->userdata['logged_in'] == TRUE )
+
+						if( @$this->session->userdata['logged_in'] == TRUE  ||@$this->input->cookie('logged_in', TRUE) == TRUE)
 					{?>
                                 <li><a href="/prq/auth/logout">Logout</a></li>
 								<?php }else{?>
@@ -283,7 +288,16 @@
                             <li class="active"><a href="/prq/">총판 목록 <span class="label label-primary pull-right">NEW</span></a></li>
                         </ul>
                     </li>
-                </ul>
+                    <li>
+                        <a href="#">
+						<i class="fa fa-diamond"></i>
+						<!-- <i class="fa fa-bar-chart-o"></i> --> <span class="nav-label">대리점</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="graph_flot.html">대리점 목록</a></li>
+                        </ul>
+                    </li>
+
+				</ul>
             </div>
         </nav>
 
