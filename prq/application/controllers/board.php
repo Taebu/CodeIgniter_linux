@@ -1,8 +1,11 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
  * 게시판 메인 controller.
+ * 모든 정보를 포함한 전체 리스트 가져오기
+ * 작성 20151206 mtb
+ * 수정 20151208 mtb
  *
- * @author Jongwon, Byun <advisor@cikorea.net>
+ * @author Taebu, Moon <mtaebu@gmail.com>
  */
 class Board extends CI_Controller {
 
@@ -30,7 +33,7 @@ class Board extends CI_Controller {
 	public function _remap($method)
  	{
  		//헤더 include
-        $this->load->view('header_v');
+        $this->load->view('header_v5_v');
 
 		if( method_exists($this, $method) )
 		{
@@ -38,7 +41,7 @@ class Board extends CI_Controller {
 		}
 
 		//푸터 include
-		$this->load->view('footer_v');
+		$this->load->view('footer_v5_v');
     }
 
 	/**
@@ -68,7 +71,7 @@ class Board extends CI_Controller {
 		$this->load->library('pagination');
 
 		//페이지네이션 설정
-		$config['base_url'] = '/bbs/board/lists/ci_board'.$page_url.'/page/'; //페이징 주소
+		$config['base_url'] = '/prq/board/lists/ci_board'.$page_url.'/page/'; //페이징 주소
 		$config['total_rows'] = $this->board_m->get_list($this->uri->segment(3), 'count', '', '', $search_word); //게시물의 전체 갯수
 		$config['per_page'] = 5; //한 페이지에 표시할 게시물 수
 		$config['uri_segment'] = $uri_segment; //페이지 번호가 위치한 세그먼트

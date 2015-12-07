@@ -39,8 +39,8 @@
 */
 
 //$route['default_controller'] = "main";
-//$route['default_controller'] = "board";
-$route['default_controller'] = "prq";
+$route['default_controller'] = "board";
+//$route['default_controller'] = "prq";
 
 $route['404_override'] = 'errors/page_missing';
 /* End of file routes.php */
